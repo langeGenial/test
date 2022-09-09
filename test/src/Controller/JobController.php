@@ -27,7 +27,7 @@ class JobController extends ApiController
     {
         $data = $companiesRepository->transformAll();
         $result = [];
-        $s = s
+        //$s = s
         foreach($data as $item){
             if($item['company_id'] == $company){
                 array_push($result, $item);
