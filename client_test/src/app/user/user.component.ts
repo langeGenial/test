@@ -21,10 +21,10 @@ export class UserComponent implements OnInit {
   errorMessage!: string;
   page: number = 1;
 
-  role: number = 536;
-  profession: number = 1;
-  division: number = 75;
-  company:number = 11604;
+  role: number = -1;
+  profession: number = -1;
+  division: number = -1;
+  company:number = -1;
 
   debut!: any;
   fin!: any;
