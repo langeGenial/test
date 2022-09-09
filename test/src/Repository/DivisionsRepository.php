@@ -39,6 +39,26 @@ class DivisionsRepository extends ServiceEntityRepository
         }
     }
 
+    public function transform(Divisions $division)
+    {
+        return [
+            'id'    => (int) $division->getId(),
+            'division' => (string) $division->getDivision(),
+        ];
+    }
+
+    public function transformAll()
+    {
+        $divisions = $this->findAll();
+        $divisionsArray = [];
+
+        foreach ($divisions as $division) {
+            $divisionsArray[] = $this->transform($division);
+        }
+
+        return $divisionsArray;
+    }
+
 //    /**
 //     * @return Divisions[] Returns an array of Divisions objects
 //     */

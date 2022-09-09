@@ -39,31 +39,46 @@ class JobsRepository extends ServiceEntityRepository
         }
     }
 
-    public function transform(Jobs $company)
+    /*public function transform(Jobs $job)
     {
         return [
-            'id'    => (int) $company->getId(),
-            'job_ref' => (string) $company->getJobRef(),
-            'company_id' => (string) $company->getCompanyId(),
-            'link' => (string) $company->getLink(),
-            'profession_id' => (string) $company->getProfessionId(),
-            'division_id' => (string) $company->getDivisionId(),
-            'role_id' => (string) $company->getRoleId(),
-            'date_published' => $company->getDatePublished(),
-            'refkey' => (string) $company->getRefkey(),
+            'id'    =>  $job->getId(),
+            'job_ref' =>  $job->getJobRef(),
+            'company_id' =>  $job->getCompanyId(),
+            'link' =>  $job->getLink(),
+            'profession_id' =>  $job->getProfessionId(),
+            'division_id' =>  $job->getDivisionId(),
+            'role_id' =>  $job->getRoleId(),
+            'date_published' => date_format($job->getDatePublished(),'Y-m-d'),
+            'refkey' => $job->getRefkey()
+        ];
+    }*/
+
+    public function transform(Jobs $job)
+    {
+        return [
+            'id'    => (int) $job->getId(),
+            'job_ref' => (string)  $job->getJobRef(),
+            'company_id' => (int) $job->getCompanyId(),
+            'link' =>  (string) $job->getLink(),
+            'profession_id' => (int) $job->getProfessionId(),
+            'division_id' => (int) $job->getDivisionId(),
+            'role_id' => (int) $job->getRoleId(),
+            'date_published' => date_format($job->getDatePublished(),'Y-m-d'),
+            'refkey' => (string) $job->getRefkey()
         ];
     }
 
     public function transformAll()
     {
-        $companies = $this->findAll();
-        $companiesArray = [];
+        $jobs = $this->findAll();
+        $jobsArray = [];
 
-        foreach ($companies as $company) {
-            $companiesArray[] = $this->transform($company);
+        foreach ($jobs as $job) {
+            $jobsArray[] = $this->transform($job);
         }
 
-        return $companiesArray;
+        return $jobsArray;
     }
 
 //    /**

@@ -39,6 +39,27 @@ class ProfessionsRepository extends ServiceEntityRepository
         }
     }
 
+    public function transform(Professions $profession)
+    {
+        return [
+            'id'    => (int) $profession->getId(),
+            'profession' => (string) $profession->getProfession(),
+        ];
+    }
+
+    public function transformAll()
+    {
+        $companies = $this->findAll();
+        $companiesArray = [];
+
+        foreach ($companies as $company) {
+            $companiesArray[] = $this->transform($company);
+        }
+
+        return $companiesArray;
+    }
+    
+
 //    /**
 //     * @return Professions[] Returns an array of Professions objects
 //     */

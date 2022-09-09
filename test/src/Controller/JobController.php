@@ -14,25 +14,25 @@ class JobController extends ApiController
     /**
     * @Route("/jobs",methods="GET")
     */
-    public function index(JobsRepository $companiesRepository)
+    public function index(JobsRepository $jobsRepository)
     {
-        $data = $companiesRepository->transformAll();
+        $data = $jobsRepository->transformAll();
         return $this->respond($data);
     }
 
     /**
-    * @Route("/job/{company}/{date}",methods="GET")
+    * @Route("/company/{company}/{date}",methods="GET")
     */
-    public function findCompany($company, $date, EntityManagerInterface $em, JobsRepository $companiesRepository)
+   /* public function findCompany($company, $date, EntityManagerInterface $em, CompaniesRepository $companiesRepository)
     {
         $data = $companiesRepository->transformAll();
         $result = [];
-        //$s = s
         foreach($data as $item){
-            if($item['company_id'] == $company){
+            $mystring = $item["company"];
+            if(preg_match("/{$company}/i", $mystring)){
                 array_push($result, $item);
             }
         }
         return $this->respond($result);
-    }
+    }*/
 }
