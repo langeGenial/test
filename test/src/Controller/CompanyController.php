@@ -23,7 +23,7 @@ class CompanyController extends ApiController
     /**
     * @Route("/company/{company}/{date}",methods="GET")
     */
-    public function findCompany($company, EntityManagerInterface $em, CompaniesRepository $companiesRepository)
+    public function findCompany($company, $date, EntityManagerInterface $em, CompaniesRepository $companiesRepository)
     {
         $data = $companiesRepository->transformAll();
         $result = [];
