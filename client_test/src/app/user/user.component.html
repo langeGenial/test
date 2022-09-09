@@ -1,6 +1,30 @@
 <div>
   <br><br><br><br><br>
   <span class="help is-info"  *ngIf="isLoading">Loading...</span>
+
+  <form #form="ngForm" (submit)="findJobs()">
+    <table class="table">
+      <tr>
+        <td>
+          <label style="color:black" for="date">start date </label>
+        </td>
+        <td>
+          <input class="form-control placeholder-no-fix" type="date" name="date" id="date" [(ngModel)]="debut" />
+        </td>
+        <td>
+          <label style="color:black" for="date1">end date </label>
+        </td>
+        <td>
+          <input class="form-control placeholder-no-fix" type="date" name="date1" id="date1" [(ngModel)]="fin" />
+        </td>
+        <td>
+          <input class="form-control placeholder-no-fix" type="submit" value="find" />
+        </td>
+      </tr>
+    </table>
+  </form>
+
+
   <table class="table">
     <tr>
       <td>
@@ -54,7 +78,7 @@
               <tr  *ngFor="let item of jobs | paginate: { itemsPerPage : 10, currentPage: page }" >
 
                 <td *ngIf="item.company_id==company && item.division_id==division && item.profession_id==profession && item.role_id==role">{{ item.job_ref }}</td>
-                <td *ngIf="item.company_id==company && item.division_id==division && item.profession_id==profession && item.role_id==role">{{ item.link }}</td>
+                <td *ngIf="item.company_id==company && item.division_id==division && item.profession_id==profession && item.role_id==role"><a href="{{ item.link }}">check</a></td>
                 <td *ngIf="item.company_id==company && item.division_id==division && item.profession_id==profession && item.role_id==role">{{ item.date_published }}</td>
               </tr>
             </tbody>

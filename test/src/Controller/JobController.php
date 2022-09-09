@@ -15,9 +15,9 @@ class JobController extends ApiController
     /**
     * @Route("/jobs",methods="GET")
     */
-    public function index(JobsRepository $companiesRepository)
+    public function index(JobsRepository $jobsRepository)
     {
-        $data = $companiesRepository->transformAll();
+        $data = $jobsRepository->transformAll();
         return $this->respond($data);
     }
 

@@ -26,6 +26,9 @@ export class UserComponent implements OnInit {
   division: number = 75;
   company:number = 11604;
 
+  debut!: any;
+  fin!: any;
+
   constructor(private userService: UserService) { }
 
   ngOnInit(): void {
@@ -65,6 +68,17 @@ export class UserComponent implements OnInit {
     this.userService.getCompanies().subscribe(data => {
       this.companies = data;
     })
+  }
+
+  findJobs() {
+    this.isLoading = true;
+    this.userService.findJobs(this.company,this.debut,this.fin).subscribe(
+      data => {
+        console.log(data)
+        this.jobs = data
+        this.isLoading = false;
+      }
+    )
   }
 
   public downloadAsPDF() {

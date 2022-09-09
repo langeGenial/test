@@ -13,7 +13,7 @@ class Jobs
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="string")
      */
     private $id;
 
@@ -62,7 +62,7 @@ class Jobs
      */
     private $refkey;
 
-    public function getId(): ?int
+    public function getId(): ?string
     {
         return $this->id;
     }

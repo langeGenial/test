@@ -57,7 +57,7 @@ class JobsRepository extends ServiceEntityRepository
     public function transform(Jobs $job)
     {
         return [
-            'id'    => (int) $job->getId(),
+            'id'    => (string) $job->getId(),
             'job_ref' => (string)  $job->getJobRef(),
             'company_id' => (int) $job->getCompanyId(),
             'link' =>  (string) $job->getLink(),
