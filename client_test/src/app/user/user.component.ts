@@ -70,7 +70,7 @@ export class UserComponent implements OnInit {
     })
   }
 
-  findJobs() {
+  findJobs() {console.log(this.debut)
     this.isLoading = true;
     this.userService.findJobs(this.company,this.debut,this.fin).subscribe(
       data => {

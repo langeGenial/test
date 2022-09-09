@@ -63,8 +63,8 @@ export class UserService {
     return this.http.get(API_URL + '/companies');
   }
 
-  findJobs(company:number,debut:Date,fin:Date): Observable<any> {
-    return this.http.get(API_URL + '/job/' + company + '/' + debut + '/' + fin);
+  findJobs(company:number,debut1:Date,fin1:Date): Observable<any> {
+    return this.http.get(API_URL + '/job/' + company + '/' + debut1 + '/' + fin1);
   }
 
 }
